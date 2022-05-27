@@ -32,6 +32,7 @@ class _PageState extends State<Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xfff665BE9),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -55,21 +56,21 @@ class _PageState extends State<Page> {
               ),
             ],
           ),
-          Text(
+          const Text(
             'Book tickets for all your',
             style: TextStyle(
               color: Colors.white,
               fontSize: 24,
             ),
           ),
-          Text(
+          const Text(
             'favourite movies',
             style: TextStyle(
               color: Colors.white,
               fontSize: 24,
             ),
           ),
-          Padding(
+          const Padding(
             padding: const EdgeInsets.only(right: 260.0),
             child: Text(
               'Username',
@@ -85,7 +86,7 @@ class _PageState extends State<Page> {
             child: Container(
               height: 45,
               width: 350,
-              child: TextField(
+              child: const TextField(
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Color(0xfffD9D9D9),
@@ -95,7 +96,7 @@ class _PageState extends State<Page> {
               ),
             ),
           ),
-          Padding(
+          const Padding(
             padding: const EdgeInsets.only(right: 260.0),
             child: Text(
               'Password',
@@ -111,7 +112,7 @@ class _PageState extends State<Page> {
             child: Container(
               height: 45,
               width: 350,
-              child: TextField(
+              child: const TextField(
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Color(0xfffD9D9D9),
@@ -132,12 +133,12 @@ class _PageState extends State<Page> {
                 ),
               ),
               onPressed: () {},
-              child: Text(
+              child: const Text(
                 'Login',
               ),
             ),
           ),
-          Text(
+          const Text(
             'Sign in with',
             style: TextStyle(
               letterSpacing: 2.0,
@@ -149,7 +150,7 @@ class _PageState extends State<Page> {
             onPressed: () {},
             icon: Image.asset('assets/images/g.png'),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20.0,
           ),
         ],

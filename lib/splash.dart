@@ -35,10 +35,6 @@ class _SplashState extends State<Splash> {
                   Image.asset('assets/images/Time.png',alignment: Alignment.centerRight,),
                 ],
               ),
-              
-              
-              
-
           ],
       ),
     );
