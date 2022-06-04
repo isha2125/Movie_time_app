@@ -148,7 +148,7 @@ class _PageState extends State<Page> {
           ),
           IconButton(
             onPressed: () {},
-            icon: Image.asset('assets/images/g.png'),
+            icon: Image.asset('assets/images/g.svg'),
           ),
           const SizedBox(
             height: 20.0,
