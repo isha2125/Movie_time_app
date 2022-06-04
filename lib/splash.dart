@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_time_app/authentication_page.dart';
 import 'package:movie_time_app/main.dart';
 class  Splash extends StatefulWidget {
   const Splash({ Key? key }) : super(key: key);
@@ -16,7 +17,7 @@ class _SplashState extends State<Splash> {
 
  _navigatetohome()async{
    await Future.delayed(Duration(seconds: 2),(){});
-   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MyHomePage(title:'Home Page')));
+   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Authpage()));
  }
 
   @override
