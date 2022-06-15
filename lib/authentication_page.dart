@@ -6,7 +6,9 @@ void main() {
 }
 
 class Authpage extends StatefulWidget {
-  const Authpage({Key? key}) : super(key: key);
+  const Authpage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<Authpage> createState() => _AuthpageState();
@@ -44,16 +46,16 @@ class _PageState extends State<Page> {
             height: 100,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Expanded(
+              Padding(
+                padding: const EdgeInsets.all(0.0),
                 child: Image.asset(
                   'assets/images/Movie.png',
                 ),
               ),
-              Expanded(
-                child: Image.asset(
-                  'assets/images/Time.png',
-                ),
+              Image.asset(
+                'assets/images/Time.png',
               ),
             ],
           ),
