@@ -5,7 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:movie_time_app/mytheme.dart';
-
+import 'package:movie_time_app/login_screen.dart';
+import 'home_screen.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
@@ -40,7 +41,8 @@ class AuthController extends GetxController {
     try {
       isLoging = true;
       update();
-      await auth.createUserWithEmailAndPassword(email: email, password: password);
+      await auth.createUserWithEmailAndPassword(
+          email: email, password: password);
       getSuccessSnackBar("Successfully logged in as ${_user.value!.email}");
     } on FirebaseAuthException catch (e) {
       //define error
@@ -68,9 +70,11 @@ class AuthController extends GetxController {
       googleSignIn.disconnect();
     } catch (e) {}
     try {
-      final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
+      final GoogleSignInAccount? googleSignInAccount =
+          await googleSignIn.signIn();
       if (googleSignInAccount != null) {
-        final GoogleSignInAuthentication? googleAuth = await googleSignInAccount.authentication;
+        final GoogleSignInAuthentication? googleAuth =
+            await googleSignInAccount.authentication;
         final crendentials = GoogleAuthProvider.credential(
           accessToken: googleAuth?.accessToken,
           idToken: googleAuth?.idToken,

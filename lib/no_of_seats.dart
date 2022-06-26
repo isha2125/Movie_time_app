@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieticketbookingapp/utils/dummy_data.dart';
-import '../controllers/seat_selection_controller.dart';
-import '../utils/mytheme.dart';
+import 'package:movie_time_app/dummy_data.dart';
+import '../seat_selection_controller.dart';
+import '../mytheme.dart';
 
 class NoOfSeats extends StatelessWidget {
   final Function(int) onTap;
@@ -24,8 +24,10 @@ class NoOfSeats extends StatelessWidget {
               height: 35,
               width: 35,
               decoration: BoxDecoration(
-                color:
-                    index + 1 == SeatSelectionController.instance.noOfSeats.value ? MyTheme.greenColor : Colors.white,
+                color: index + 1 ==
+                        SeatSelectionController.instance.noOfSeats.value
+                    ? MyTheme.greenColor
+                    : Colors.white,
                 borderRadius: BorderRadius.circular(5),
               ),
               padding: const EdgeInsets.all(5),
@@ -33,7 +35,10 @@ class NoOfSeats extends StatelessWidget {
                 child: Text(
                   "${index + 1}",
                   style: TextStyle(
-                    color: index + 1 == SeatSelectionController.instance.noOfSeats.value ? Colors.white : Colors.black,
+                    color: index + 1 ==
+                            SeatSelectionController.instance.noOfSeats.value
+                        ? Colors.white
+                        : Colors.black,
                   ),
                 ),
               ),

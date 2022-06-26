@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:movieticketbookingapp/controllers/auth_controller.dart';
-import 'package:movieticketbookingapp/controllers/seat_selection_controller.dart';
-import 'package:movieticketbookingapp/model/movie_model.dart';
-import 'package:movieticketbookingapp/model/theatre_model.dart';
-import 'package:movieticketbookingapp/utils/mytheme.dart';
-import 'package:movieticketbookingapp/widgets/no_of_seats.dart';
-import 'package:movieticketbookingapp/widgets/seat_layout.dart';
-import 'package:movieticketbookingapp/widgets/seat_type.dart';
-import 'package:movieticketbookingapp/widgets/theatre_block.dart';
+import 'package:movie_time_app/auth_controller.dart';
+import 'package:movie_time_app/seat_selection_controller.dart';
+import 'package:movie_time_app/movie_model.dart';
+import 'package:movie_time_app/theatre_model.dart';
+import 'package:movie_time_app/mytheme.dart';
+import 'package:movie_time_app/no_of_seats.dart';
+import 'package:movie_time_app/seat_layout.dart';
+import 'package:movie_time_app/seat_type.dart';
+import 'package:movie_time_app/theatre_block.dart';
 
-import '../utils/dummy_data.dart';
+import '../dummy_data.dart';
 
 class SeatSelectionScreen extends StatefulWidget {
   final TheatreModel theatreModel;
@@ -47,7 +47,8 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
               ),
               Obx(
                 () => Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                   child: SvgPicture.asset(
                     "assets/icons/${SeatSelectionController.instance.getAsset()}",
                     height: 100,
@@ -79,13 +80,15 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
 
             if (SeatSelectionController.instance.isSeatSelection.value) {
               if (SeatSelectionController.instance.seatPrice <= 0.0) {
-                AuthController.instance.getErrorSnackBarNew("Please select atleast one seat");
+                AuthController.instance
+                    .getErrorSnackBarNew("Please select atleast one seat");
                 return;
               }
               SeatSelectionController.instance.createOrder();
             } else {
               if (SeatSelectionController.instance.noOfSeats.value <= 0) {
-                AuthController.instance.getErrorSnackBarNew("Please select number of seats");
+                AuthController.instance
+                    .getErrorSnackBarNew("Please select number of seats");
                 return;
               }
               toggle(true);
@@ -139,9 +142,11 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: bottomBar(toggle: SeatSelectionController.instance.isSeatSelection),
+      bottomNavigationBar:
+          bottomBar(toggle: SeatSelectionController.instance.isSeatSelection),
       backgroundColor: const Color(0xFFF5F5FA),
-      appBar: myAppBar(toggle: SeatSelectionController.instance.isSeatSelection),
+      appBar:
+          myAppBar(toggle: SeatSelectionController.instance.isSeatSelection),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

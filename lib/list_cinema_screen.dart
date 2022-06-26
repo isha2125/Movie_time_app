@@ -7,7 +7,7 @@ import 'calendar_controller.dart';
 import 'mytheme.dart';
 import 'theatre_block.dart';
 import 'movie_model.dart';
-
+import 'seat_selection_controller.dart';
 
 class ListCinemaScreen extends StatefulWidget {
   final MovieModel model;
@@ -59,7 +59,8 @@ class _ListCinemaScreenState extends State<ListCinemaScreen> {
                   child: StatefulBuilder(
                     builder: (_, setState) {
                       final todayDate = format.format(now);
-                      final tomorrowDate = format.format(now.add(const Duration(days: 1)));
+                      final tomorrowDate =
+                          format.format(now.add(const Duration(days: 1)));
                       String text = "";
 
                       if (selectedDate == todayDate) {
@@ -67,7 +68,9 @@ class _ListCinemaScreenState extends State<ListCinemaScreen> {
                       } else if (selectedDate == tomorrowDate) {
                         text = "Tomorrow, ";
                       } else {
-                        text = DateFormat("EEE").format(commonController.selectedMovieDate.value) + ", ";
+                        text = DateFormat("EEE").format(
+                                commonController.selectedMovieDate.value) +
+                            ", ";
                       }
 
                       return ListTile(
@@ -75,7 +78,10 @@ class _ListCinemaScreenState extends State<ListCinemaScreen> {
                           showModalBottomSheet(
                                   context: context,
                                   builder: (_) => CustomCalendar(),
-                                  constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.35))
+                                  constraints: BoxConstraints(
+                                      maxHeight:
+                                          MediaQuery.of(context).size.height *
+                                              0.35))
                               .then((value) => setState(() {
                                     if (value != null) {
                                       selectedDate = format.format(value);
@@ -114,7 +120,9 @@ class _ListCinemaScreenState extends State<ListCinemaScreen> {
                               setState(() => selectedScreen = screen);
                             },
                           ),
-                          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.25),
+                          constraints: BoxConstraints(
+                              maxHeight:
+                                  MediaQuery.of(context).size.height * 0.25),
                         );
                       },
                       horizontalTitleGap: 0,
@@ -153,11 +161,13 @@ class _ListCinemaScreenState extends State<ListCinemaScreen> {
           itemCount: theatres.length,
           itemBuilder: (_, index) {
             return Container(
-              padding: EdgeInsets.only(bottom: index != theatres.length - 1 ? 20 : 0),
+              padding: EdgeInsets.only(
+                  bottom: index != theatres.length - 1 ? 20 : 0),
               child: TheatreBlock(
                 model: theatres[index],
                 onTimeTap: (index) {
-                  Get.to(() => SeatSelectionScreen(theatreModel: theatres[index], movieModel: widget.model));
+                  Get.to(() => SeatSelectionScreen(
+                      theatreModel: theatres[index], movieModel: widget.model));
                 },
               ),
             );
@@ -204,7 +214,8 @@ class TheatreSearchDelegate extends SearchDelegate {
         ? theatres
         : theatres
             .where(
-              (element) => element.name.toLowerCase().contains(query.toLowerCase()),
+              (element) =>
+                  element.name.toLowerCase().contains(query.toLowerCase()),
             )
             .toList();
 
@@ -213,11 +224,13 @@ class TheatreSearchDelegate extends SearchDelegate {
       itemCount: suggestionList.length,
       itemBuilder: (_, index) {
         return Container(
-          padding: EdgeInsets.only(bottom: index != suggestionList.length - 1 ? 20 : 0),
+          padding: EdgeInsets.only(
+              bottom: index != suggestionList.length - 1 ? 20 : 0),
           child: TheatreBlock(
             model: suggestionList[index],
             onTimeTap: (index) {
-              Get.to(() => SeatSelectionScreen(theatreModel: suggestionList[index], movieModel: model));
+              Get.to(() => SeatSelectionScreen(
+                  theatreModel: suggestionList[index], movieModel: model));
             },
           ),
         );

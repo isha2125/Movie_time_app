@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:movieticketbookingapp/controllers/seat_selection_controller.dart';
-import 'package:movieticketbookingapp/model/seat_layout_model.dart';
-import 'package:movieticketbookingapp/utils/mytheme.dart';
+import 'package:movie_time_app/seat_selection_controller.dart';
+import 'package:movie_time_app/seat_layout_model.dart';
+import 'package:movie_time_app/mytheme.dart';
 
 // ignore: must_be_immutable
 class SeatLayout extends StatelessWidget {
@@ -13,7 +13,10 @@ class SeatLayout extends StatelessWidget {
   int seatCounter = 0;
   double amount = 0.0;
 
-  Widget mainSeatLayout({required Function(double) seatPrice, required double price, required String rowNo}) {
+  Widget mainSeatLayout(
+      {required Function(double) seatPrice,
+      required double price,
+      required String rowNo}) {
     String seatNo = "$seatCounter";
     return Padding(
       padding: const EdgeInsets.all(5.0),
@@ -26,7 +29,8 @@ class SeatLayout extends StatelessWidget {
             seatPriceList.remove(price);
             seats.remove("$rowNo$seatNo");
           } else {
-            if (seats.length >= SeatSelectionController.instance.noOfSeats.value) {
+            if (seats.length >=
+                SeatSelectionController.instance.noOfSeats.value) {
               seats.removeAt(0);
               seatPriceList.removeAt(0);
               seats.add("$rowNo$seatNo");
@@ -42,13 +46,16 @@ class SeatLayout extends StatelessWidget {
         },
         child: Obx(
           () {
-            Color backColor = SeatSelectionController.instance.selectedSeats.contains("$rowNo$seatNo")
+            Color backColor = SeatSelectionController.instance.selectedSeats
+                    .contains("$rowNo$seatNo")
                 ? MyTheme.greenColor
                 : const Color(0xffffffff);
-            Color textColor = SeatSelectionController.instance.selectedSeats.contains("$rowNo$seatNo")
+            Color textColor = SeatSelectionController.instance.selectedSeats
+                    .contains("$rowNo$seatNo")
                 ? Colors.white
                 : Colors.black87;
-            Color borderColor = SeatSelectionController.instance.selectedSeats.contains("$rowNo$seatNo")
+            Color borderColor = SeatSelectionController.instance.selectedSeats
+                    .contains("$rowNo$seatNo")
                 ? MyTheme.greenColor
                 : const Color(0xff707070);
             return AnimatedContainer(
@@ -112,7 +119,8 @@ class SeatLayout extends StatelessWidget {
                               alphabetCounter++;
                               seatCounter = 0;
 
-                              String rowNo = String.fromCharCode(65 + alphabetCounter);
+                              String rowNo =
+                                  String.fromCharCode(65 + alphabetCounter);
                               return Wrap(
                                 children: List.generate(
                                   model.cols,
@@ -129,8 +137,13 @@ class SeatLayout extends StatelessWidget {
                                     }
                                     //making gaps
                                     //making last row filled
-                                    if ((col == model.gapColIndex || col == model.gapColIndex + model.gap - 1) &&
-                                        (row != model.rowBreaks[index] - 1 && model.isLastFilled)) {
+                                    if ((col == model.gapColIndex ||
+                                            col ==
+                                                model.gapColIndex +
+                                                    model.gap -
+                                                    1) &&
+                                        (row != model.rowBreaks[index] - 1 &&
+                                            model.isLastFilled)) {
                                       return Padding(
                                         padding: const EdgeInsets.all(5.0),
                                         child: Container(
@@ -143,10 +156,13 @@ class SeatLayout extends StatelessWidget {
                                     //numbering the seats
                                     seatCounter++;
                                     String seatNo = "$seatCounter";
-                                    double price = model.seatTypes[seatLength - index - 1]['price'];
+                                    double price =
+                                        model.seatTypes[seatLength - index - 1]
+                                            ['price'];
 
                                     return mainSeatLayout(
-                                        seatPrice: SeatSelectionController.instance.seatPrice,
+                                        seatPrice: SeatSelectionController
+                                            .instance.seatPrice,
                                         price: price,
                                         rowNo: rowNo);
                                   },

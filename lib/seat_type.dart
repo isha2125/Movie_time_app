@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieticketbookingapp/controllers/seat_selection_controller.dart';
-import 'package:movieticketbookingapp/utils/mytheme.dart';
+import 'package:movie_time_app/seat_selection_controller.dart';
+import 'package:movie_time_app/mytheme.dart';
 
-import '../utils/dummy_data.dart';
+import '../dummy_data.dart';
 
 class SeatType extends StatelessWidget {
   final Function(int) onTap;
@@ -27,12 +27,14 @@ class SeatType extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: index == SeatSelectionController.instance.seatType.value
-                      ? MyTheme.greenColor
-                      : const Color(0xfffcfcfc),
+                  color:
+                      index == SeatSelectionController.instance.seatType.value
+                          ? MyTheme.greenColor
+                          : const Color(0xfffcfcfc),
                   border: Border.all(
                       width: 0.5,
-                      color: index == SeatSelectionController.instance.seatType.value
+                      color: index ==
+                              SeatSelectionController.instance.seatType.value
                           ? MyTheme.greenColor
                           : const Color(0xffe5e5e5)),
                 ),
@@ -41,7 +43,8 @@ class SeatType extends StatelessWidget {
                     Text(
                       seatLayout.seatTypes[index]['title'],
                       style: TextStyle(
-                        color: index == SeatSelectionController.instance.seatType.value
+                        color: index ==
+                                SeatSelectionController.instance.seatType.value
                             ? Colors.white
                             : const Color(0xff999999),
                         fontSize: 16,
@@ -53,7 +56,10 @@ class SeatType extends StatelessWidget {
                     Text(
                       "\u20B9 ${seatLayout.seatTypes[index]['price']}",
                       style: TextStyle(
-                        color: index == SeatSelectionController.instance.seatType.value ? Colors.white : Colors.black,
+                        color: index ==
+                                SeatSelectionController.instance.seatType.value
+                            ? Colors.white
+                            : Colors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -64,8 +70,10 @@ class SeatType extends StatelessWidget {
                     Text(
                       seatLayout.seatTypes[index]['status'],
                       style: TextStyle(
-                        color:
-                            index == SeatSelectionController.instance.seatType.value ? Colors.white : Color(0xff999999),
+                        color: index ==
+                                SeatSelectionController.instance.seatType.value
+                            ? Colors.white
+                            : Color(0xff999999),
                         fontSize: 16,
                       ),
                     ),

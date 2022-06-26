@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:get/get.dart';
-import 'package:movieticketbookingapp/controllers/auth_controller.dart';
-import 'package:movieticketbookingapp/utils/constants.dart';
+import 'package:movie_time_app/auth_controller.dart';
+import 'package:movie_time_app/constants.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:http/http.dart' as http;
 
@@ -46,15 +46,16 @@ class SeatSelectionController extends GetxController {
     update();
   }
 
-  String getRandomString(int length) =>
-      String.fromCharCodes(Iterable.generate(length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
+  String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
 
   void createOrder() async {
     http.Response res = await http.post(
       Uri.parse(Constants.createOrderUrl),
       headers: {
         'content-type': 'application/json',
-        'authorization': 'Basic ${base64Encode(utf8.encode(Constants.keyId + ':' + Constants.keySecret))}'
+        'authorization':
+            'Basic ${base64Encode(utf8.encode(Constants.keyId + ':' + Constants.keySecret))}'
       },
       body: jsonEncode({
         "amount": seatPrice * 100,
@@ -93,12 +94,14 @@ class SeatSelectionController extends GetxController {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
-    AuthController.instance.getSuccessSnackBar("Payment Success for order Id : ${response.orderId}");
+    AuthController.instance.getSuccessSnackBar(
+        "Payment Success for order Id : ${response.orderId}");
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
     // Do something when payment fails
-    AuthController.instance.getErrorSnackBarNew("Payment failed : ${response.message}");
+    AuthController.instance
+        .getErrorSnackBarNew("Payment failed : ${response.message}");
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
